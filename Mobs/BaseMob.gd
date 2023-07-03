@@ -7,6 +7,7 @@ var velocity
 func _ready():
 	# set speed in Y direction then rotate in random direction
 	velocity = Vector2(speed, 0).rotated(randf() * 2.0 * PI)
+	rotation = velocity.angle()
 	
 func _physics_process(delta):
 	move_and_slide(velocity)

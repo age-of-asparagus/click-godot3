@@ -35,3 +35,5 @@ func _on_Detector_body_entered(body):
 	body.queue_free()
 	health -= 1
 	print("Health: " + str(health))
+	if health <= 0:
+		queue_free()

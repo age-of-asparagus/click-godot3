@@ -11,8 +11,13 @@ script = ExtResource( 2 )
 Mob = ExtResource( 3 )
 
 [node name="SpawnTimer" type="Timer" parent="SpawnManager"]
+wait_time = 0.25
 autostart = true
 
 [node name="Character" parent="." instance=ExtResource( 1 )]
+position = Vector2( 447, 250 )
+
+[node name="BaseMob" parent="." instance=ExtResource( 3 )]
+position = Vector2( 246, 130 )
 
 [connection signal="timeout" from="SpawnManager/SpawnTimer" to="SpawnManager" method="_on_SpawnTimer_timeout"]
