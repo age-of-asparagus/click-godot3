@@ -5,17 +5,22 @@ export var BiteEffect : PackedScene
 
 export var speed := 200
 export var Ammo : PackedScene
-export var health := 10
+export var max_health := 10
+onready var health = max_health
 
 var rotation_direction = 0
 var movement_direction = 0
 var target_rotation = 0
 var velocity
-	
+
 func _physics_process(delta):
 	rotation = get_global_mouse_position().angle_to_point(position)
 	var input_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	velocity = input_direction * speed
+	if velocity != Vector2.ZERO:
+		$AnimatedSprite.play()
+	else:
+		$AnimatedSprite.stop()
 	move_and_slide(velocity)	
 	
 	if Input.is_action_just_pressed("shoot"):
@@ -46,9 +51,9 @@ func _on_Detector_body_entered(body):
 	get_tree().get_root().add_child(effect)
 	effect.position = body.global_position
 	body.queue_free()
-	
+
 	health -= 1
-	print("Health: " + str(health))
+	$HealthHUD.update_healthbar(health)
 	if health <= 0:
 		die()
 		
