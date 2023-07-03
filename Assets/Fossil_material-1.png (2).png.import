@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Fossil_material.png-028c8cfbb8086f31f113d50d7411567d.stex"
+path="res://.import/Fossil_material-1.png (2).png-78164d83ac7194a57c10369383ca9f2c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Fossil_material.png"
-dest_files=[ "res://.import/Fossil_material.png-028c8cfbb8086f31f113d50d7411567d.stex" ]
+source_file="res://Assets/Fossil_material-1.png (2).png"
+dest_files=[ "res://.import/Fossil_material-1.png (2).png-78164d83ac7194a57c10369383ca9f2c.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
