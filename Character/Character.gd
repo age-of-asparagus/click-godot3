@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+export var DeathEffect : PackedScene
+
 export var speed := 200
 export var Ammo : PackedScene
 export var health := 10
@@ -25,6 +27,13 @@ func shoot():
 		
 		projectile.global_transform = $Hand.global_transform
 		Global.stones -= 1
+		
+func die():
+	var death_effect : Node2D = DeathEffect.instance()
+	get_tree().get_root().add_child(death_effect)
+	death_effect.position = global_position
+	death_effect.scale = Vector2(5, 5)
+	queue_free()
 
 func _on_Detector_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
 	print("Clicker!")
@@ -36,4 +45,6 @@ func _on_Detector_body_entered(body):
 	health -= 1
 	print("Health: " + str(health))
 	if health <= 0:
-		queue_free()
+		die()
+		
+
