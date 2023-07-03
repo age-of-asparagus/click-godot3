@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Stone_material.png" type="Texture" id=2]
 [ext_resource path="res://Character/Character.gd" type="Script" id=3]
 [ext_resource path="res://Weapons/Stone.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Effects/BloodSplatterHuge.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Effects/FadingSplatterBase.tscn" type="PackedScene" id=6]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 26.0192
@@ -19,6 +20,7 @@ __meta__ = {
 "_edit_group_": true
 }
 DeathEffect = ExtResource( 5 )
+BiteEffect = ExtResource( 6 )
 Ammo = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="."]

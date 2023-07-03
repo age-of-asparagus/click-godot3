@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 export var DeathEffect : PackedScene
+export var BiteEffect : PackedScene
 
 export var speed := 200
 export var Ammo : PackedScene
@@ -32,7 +33,6 @@ func die():
 	var death_effect : Node2D = DeathEffect.instance()
 	get_tree().get_root().add_child(death_effect)
 	death_effect.position = global_position
-	death_effect.scale = Vector2(5, 5)
 	queue_free()
 
 func _on_Detector_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
@@ -41,7 +41,12 @@ func _on_Detector_area_shape_entered(area_rid, area, area_shape_index, local_sha
 
 func _on_Detector_body_entered(body):
 	print("OUCH!")
+	
+	var effect : Node2D = BiteEffect.instance()
+	get_tree().get_root().add_child(effect)
+	effect.position = body.global_position
 	body.queue_free()
+	
 	health -= 1
 	print("Health: " + str(health))
 	if health <= 0:
