@@ -3,15 +3,21 @@ extends KinematicBody2D
 export var speed := 50
 export var DeathEffect : PackedScene
 var velocity
+var viewport_rect: Rect2
+
 
 func _ready():
 	# set speed in Y direction then rotate in random direction
 	velocity = Vector2(speed, 0).rotated(randf() * 2.0 * PI)
 	rotation = velocity.angle()
+	viewport_rect = get_viewport().get_visible_rect().grow(50)
 	
 func _physics_process(delta):
 	move_and_slide(velocity)
-
+	
+	# remove them if they move off the screen:
+	if not viewport_rect.has_point(position):
+		queue_free()
 		
 func die():
 	print("DEATH!")
