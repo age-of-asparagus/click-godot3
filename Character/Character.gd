@@ -40,10 +40,8 @@ func die():
 	get_tree().get_root().add_child(death_effect)
 	death_effect.position = global_position
 	queue_free()
-
-func _on_Detector_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
-	print("Clicker!")
-	get_tree().change_scene_to_file("res://sticks_and_stones.tscn")
+	
+	
 
 func _on_Detector_body_entered(body):
 	
@@ -64,5 +62,3 @@ func _on_Detector_body_entered(body):
 	$HealthHUD.update_healthbar(health)
 	if health <= 0:
 		die()
-		
-
