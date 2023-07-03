@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://minigames/sticks_and_Stones.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Stick_material.png" type="Texture" id=2]
@@ -12,30 +12,7 @@
 [ext_resource path="res://Assets/auto_click.png" type="Texture" id=10]
 [ext_resource path="res://Assets/the_real_shop.png" type="Texture" id=11]
 [ext_resource path="res://Assets/magnet.png" type="Texture" id=12]
-
-[sub_resource type="StyleBoxFlat" id=1]
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-
-[sub_resource type="StyleBoxFlat" id=2]
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-
-[sub_resource type="DynamicFont" id=5]
-font_data = ExtResource( 6 )
-
-[sub_resource type="StyleBoxFlat" id=3]
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-
-[sub_resource type="DynamicFont" id=4]
-font_data = ExtResource( 6 )
+[ext_resource path="res://Magnet_effect.tscn" type="PackedScene" id=13]
 
 [sub_resource type="CircleShape2D" id=6]
 radius = 6.08276
@@ -85,6 +62,42 @@ tracks/0/keys = {
 "values": [ Vector2( 320, 180 ) ]
 }
 
+[sub_resource type="StyleBoxFlat" id=3]
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 8
+font_data = ExtResource( 6 )
+
+[sub_resource type="StyleBoxFlat" id=1]
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="DynamicFont" id=12]
+size = 8
+font_data = ExtResource( 6 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="DynamicFont" id=5]
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 8
+font_data = ExtResource( 6 )
+
 [node name="sticks_and_Stones" type="Node2D"]
 script = ExtResource( 1 )
 
@@ -100,96 +113,6 @@ autostart = true
 [node name="stone_spawn_timer" type="Timer" parent="."]
 one_shot = true
 autostart = true
-
-[node name="fossil_panel" type="Panel" parent="."]
-self_modulate = Color( 0, 0, 0, 0.294118 )
-margin_left = 160.0
-margin_right = 260.0
-margin_bottom = 50.0
-custom_styles/panel = SubResource( 1 )
-
-[node name="TextureRect" type="TextureRect" parent="fossil_panel"]
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_left = -36.0
-margin_top = -18.0
-margin_bottom = 18.0
-texture = ExtResource( 3 )
-
-[node name="Label" type="Label" parent="fossil_panel"]
-anchor_top = 0.5
-anchor_bottom = 0.5
-margin_left = 5.0
-margin_top = -8.0
-margin_right = 45.0
-margin_bottom = 8.0
-custom_fonts/font = ExtResource( 5 )
-text = "x0"
-
-[node name="Position2D" type="Position2D" parent="fossil_panel"]
-position = Vector2( 82, 25 )
-
-[node name="stick_panel" type="Panel" parent="."]
-self_modulate = Color( 0, 0, 0, 0.294118 )
-margin_left = 270.0
-margin_right = 370.0
-margin_bottom = 50.0
-custom_styles/panel = SubResource( 2 )
-
-[node name="TextureRect" type="TextureRect" parent="stick_panel"]
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_left = -64.0
-margin_top = -32.0
-margin_bottom = 32.0
-texture = ExtResource( 2 )
-
-[node name="Label" type="Label" parent="stick_panel"]
-anchor_top = 0.5
-anchor_bottom = 0.5
-margin_left = 5.0
-margin_top = -8.0
-margin_right = 45.0
-margin_bottom = 8.0
-custom_fonts/font = SubResource( 5 )
-text = "x0"
-
-[node name="Position2D" type="Position2D" parent="stick_panel"]
-position = Vector2( 68, 25 )
-
-[node name="stone_panel" type="Panel" parent="."]
-self_modulate = Color( 0, 0, 0, 0.294118 )
-margin_left = 380.0
-margin_right = 480.0
-margin_bottom = 50.0
-custom_styles/panel = SubResource( 3 )
-
-[node name="TextureRect" type="TextureRect" parent="stone_panel"]
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_left = -64.0
-margin_top = -32.0
-margin_bottom = 32.0
-texture = ExtResource( 4 )
-
-[node name="Label" type="Label" parent="stone_panel"]
-anchor_top = 0.5
-anchor_bottom = 0.5
-margin_left = 5.0
-margin_top = -7.0
-margin_right = 45.0
-margin_bottom = 7.0
-custom_fonts/font = SubResource( 4 )
-text = "x0"
-
-[node name="Position2D" type="Position2D" parent="stone_panel"]
-position = Vector2( 68, 25 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 320, 180 )
@@ -267,10 +190,178 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mouse_area"]
 shape = SubResource( 6 )
 
+[node name="Magnet_effect" parent="Mouse_area" instance=ExtResource( 13 )]
+scale = Vector2( 1e-05, 1e-05 )
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Camera_transition = SubResource( 7 )
 anims/Camera_transition_back = SubResource( 8 )
 anims/RESET = SubResource( 9 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="stone_panel" type="Panel" parent="CanvasLayer"]
+self_modulate = Color( 0, 0, 0, 0.294118 )
+margin_left = 380.0
+margin_right = 480.0
+margin_bottom = 50.0
+custom_styles/panel = SubResource( 3 )
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/stone_panel"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -64.0
+margin_top = -36.0
+margin_bottom = 28.0
+texture = ExtResource( 4 )
+
+[node name="stone_amount" type="Label" parent="CanvasLayer/stone_panel"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 5.0
+margin_top = -11.0
+margin_right = 45.0
+margin_bottom = 5.0
+custom_fonts/font = SubResource( 4 )
+text = "x0"
+
+[node name="Position2D" type="Position2D" parent="CanvasLayer/stone_panel"]
+position = Vector2( 68, 21 )
+
+[node name="sell_amount" type="HScrollBar" parent="CanvasLayer/stone_panel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -50.0
+margin_top = -12.0
+margin_right = 50.0
+step = 1.0
+rounded = true
+custom_step = 1.0
+
+[node name="stone_sell_amount" type="Label" parent="CanvasLayer/stone_panel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -38.5
+margin_top = -10.0
+margin_right = 38.5
+margin_bottom = -1.0
+custom_fonts/font = SubResource( 10 )
+text = "0"
+align = 1
+
+[node name="fossil_panel" type="Panel" parent="CanvasLayer"]
+self_modulate = Color( 0, 0, 0, 0.294118 )
+margin_left = 160.0
+margin_right = 260.0
+margin_bottom = 50.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/fossil_panel"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -36.0
+margin_top = -22.0
+margin_bottom = 14.0
+texture = ExtResource( 3 )
+
+[node name="fossil_amount" type="Label" parent="CanvasLayer/fossil_panel"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 5.0
+margin_top = -12.0
+margin_right = 45.0
+margin_bottom = 4.0
+custom_fonts/font = ExtResource( 5 )
+text = "x0"
+
+[node name="Position2D" type="Position2D" parent="CanvasLayer/fossil_panel"]
+position = Vector2( 82, 21 )
+
+[node name="sell_amount" type="HScrollBar" parent="CanvasLayer/fossil_panel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -50.0
+margin_top = -12.0
+margin_right = 50.0
+rounded = true
+custom_step = 1.0
+
+[node name="fossil_sell_amount" type="Label" parent="CanvasLayer/fossil_panel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -38.5
+margin_top = -10.0
+margin_right = 38.5
+margin_bottom = -1.0
+custom_fonts/font = SubResource( 12 )
+text = "0"
+align = 1
+
+[node name="stick_panel" type="Panel" parent="CanvasLayer"]
+self_modulate = Color( 0, 0, 0, 0.294118 )
+margin_left = 270.0
+margin_right = 370.0
+margin_bottom = 50.0
+custom_styles/panel = SubResource( 2 )
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/stick_panel"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -64.0
+margin_top = -36.0
+margin_bottom = 28.0
+texture = ExtResource( 2 )
+
+[node name="stick_amount" type="Label" parent="CanvasLayer/stick_panel"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 5.0
+margin_top = -12.0
+margin_right = 45.0
+margin_bottom = 4.0
+custom_fonts/font = SubResource( 5 )
+text = "x0"
+
+[node name="Position2D" type="Position2D" parent="CanvasLayer/stick_panel"]
+position = Vector2( 68, 21 )
+
+[node name="sell_amount" type="HScrollBar" parent="CanvasLayer/stick_panel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -50.0
+margin_top = -12.0
+margin_right = 50.0
+rounded = true
+custom_step = 1.0
+
+[node name="stick_sell_amount" type="Label" parent="CanvasLayer/stick_panel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -38.5
+margin_top = -10.0
+margin_right = 38.5
+margin_bottom = -1.0
+custom_fonts/font = SubResource( 11 )
+text = "0"
+align = 1
 
 [connection signal="timeout" from="fossil_spawn_timer" to="." method="_on_fossil_spawn_timer_timeout"]
 [connection signal="timeout" from="stick_spawn_timer" to="." method="_on_stick_spawn_timer_timeout"]

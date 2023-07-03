@@ -11,11 +11,23 @@ func _ready():
 	rng.randomize()
 
 func _physics_process(delta):
+	get_node("CanvasLayer/stone_panel/sell_amount").max_value = Global.stones
+	get_node("CanvasLayer/stone_panel/stone_sell_amount").text = String(get_node("CanvasLayer/stone_panel/sell_amount").value)
+	
+	get_node("CanvasLayer/stick_panel/sell_amount").max_value = Global.sticks
+	get_node("CanvasLayer/stick_panel/stick_sell_amount").text = String(get_node("CanvasLayer/stick_panel/sell_amount").value)
+	
+	get_node("CanvasLayer/fossil_panel/sell_amount").max_value = Global.fossils
+	get_node("CanvasLayer/fossil_panel/fossil_sell_amount").text = String(get_node("CanvasLayer/fossil_panel/sell_amount").value)
+	
+	if Global.Stick_Stones_magnet_size >= 1.5:
+		$Mouse_area/Magnet_effect.scale = Vector2(Global.Stick_Stones_magnet_size, Global.Stick_Stones_magnet_size) 
+	$Mouse_area/Magnet_effect.global_position = get_global_mouse_position()
 	$Mouse_area/CollisionShape2D.scale = Vector2(Global.Stick_Stones_magnet_size, Global.Stick_Stones_magnet_size)
 	$Mouse_area/CollisionShape2D.global_position = get_global_mouse_position()
-	get_node("stone_panel/Label").set_text("x" + str(Global.stones))
-	get_node("stick_panel/Label").set_text("x" + str(Global.sticks))
-	get_node("fossil_panel/Label").set_text("x" + str(Global.Fossils))
+	$CanvasLayer.get_node("stone_panel/stone_amount").set_text("x" + str(Global.stones))
+	$CanvasLayer.get_node("stick_panel/stick_amount").set_text("x" + str(Global.sticks))
+	$CanvasLayer.get_node("fossil_panel/fossil_amount").set_text("x" + str(Global.fossils))
 	
 
 func _on_fossil_spawn_timer_timeout():

@@ -11,7 +11,7 @@ var fossil_label_position
 func _physics_process(delta):
 	if $Area2D.overlaps_area(mouse) == true:
 		if Global.Stick_Stones_hover_mode == true:
-			fossil_label_position = get_parent().get_node("fossil_panel/Position2D").global_position
+			fossil_label_position = get_parent().get_node("CanvasLayer").get_node("fossil_panel/Position2D").global_position
 			clicked = true
 			disabled = true
 			$AnimationPlayer.play("size")
@@ -22,7 +22,7 @@ func _physics_process(delta):
 			speed *= 1.05
 		rect_global_position += Vector2(fossil_label_position - rect_global_position).normalized() * speed
 		if fossil_label_position.distance_to(rect_global_position) <= 50:
-			Global.Fossils += 1
+			Global.fossils += 1
 			queue_free()
 
 func _on_disappear_timer_timeout():
@@ -30,9 +30,9 @@ func _on_disappear_timer_timeout():
 		queue_free()
 
 
-func _on_button_down():
+func _on_Fossil_button_button_down():
 	if Global.Stick_Stones_hover_mode == false:
-		fossil_label_position = get_parent().get_node("fossil_panel/Position2D").global_position
+		fossil_label_position = get_parent().get_node("CanvasLayer").get_node("fossil_panel/Position2D").global_position
 		clicked = true
 		disabled = true
 		$AnimationPlayer.play("size")

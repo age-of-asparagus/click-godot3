@@ -9,7 +9,7 @@ var stick_label_position
 func _physics_process(delta):
 	if $Area2D.overlaps_area(mouse) == true:
 		if Global.Stick_Stones_hover_mode == true:
-			stick_label_position = get_parent().get_node("stick_panel/Position2D").global_position
+			stick_label_position = get_parent().get_node("CanvasLayer").get_node("stick_panel/Position2D").global_position
 			clicked = true
 			disabled = true
 			$AnimationPlayer.play("size")
@@ -29,7 +29,7 @@ func _on_disappear_timer_timeout():
 
 func _on_Stick_button_button_down():
 	if Global.Stick_Stones_hover_mode == false:
-		stick_label_position = get_parent().get_node("stick_panel/Position2D").global_position
+		stick_label_position = get_parent().get_node("CanvasLayer").get_node("stick_panel/Position2D").global_position
 		clicked = true
 		disabled = true
 		$AnimationPlayer.play("size")
