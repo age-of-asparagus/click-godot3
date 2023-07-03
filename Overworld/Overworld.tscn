@@ -11,7 +11,7 @@ script = ExtResource( 2 )
 Mob = ExtResource( 3 )
 
 [node name="SpawnTimer" type="Timer" parent="SpawnManager"]
-wait_time = 0.25
+wait_time = 0.1
 autostart = true
 
 [node name="Character" parent="." instance=ExtResource( 1 )]

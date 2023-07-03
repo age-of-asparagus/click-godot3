@@ -4,13 +4,13 @@
 [ext_resource path="res://Assets/Stone_material.png" type="Texture" id=2]
 [ext_resource path="res://Character/Character.gd" type="Script" id=3]
 [ext_resource path="res://Weapons/Stone.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Effects/BloodSplatter.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Effects/BloodSplatterHuge.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 30.1496
+radius = 26.0192
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 26.0
+radius = 30.0
 
 [node name="Character" type="KinematicBody2D"]
 collision_mask = 2
