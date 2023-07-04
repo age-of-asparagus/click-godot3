@@ -99,5 +99,10 @@ rotation = 1.5708
 scale = Vector2( 3, 3 )
 frames = SubResource( 9 )
 
+[node name="FirerateTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
 [connection signal="area_shape_entered" from="Detector" to="." method="_on_Detector_area_shape_entered"]
 [connection signal="body_entered" from="Detector" to="." method="_on_Detector_body_entered"]
+[connection signal="timeout" from="FirerateTimer" to="." method="_on_FirerateTimer_timeout"]

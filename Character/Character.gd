@@ -13,6 +13,7 @@ var rotation_direction = 0
 var movement_direction = 0
 var target_rotation = 0
 var velocity
+var can_shoot = true
 
 func _physics_process(delta):
 	rotation = get_global_mouse_position().angle_to_point(position)
@@ -24,8 +25,10 @@ func _physics_process(delta):
 		$AnimatedSprite.stop()
 	move_and_slide(velocity)	
 	
-	if Input.is_action_just_pressed("shoot"):
-		shoot()
+	if Input.is_action_pressed("shoot"):
+		if can_shoot:
+			shoot()
+
 
 func shoot():
 	if Global.stones >= 1:
@@ -34,6 +37,8 @@ func shoot():
 		
 		projectile.global_transform = $Hand.global_transform
 		Global.stones -= 1
+		can_shoot = false
+		$FirerateTimer.start()
 		
 func die():
 	var death_effect : Node2D = DeathEffect.instance()
@@ -44,8 +49,6 @@ func die():
 	
 
 func _on_Detector_body_entered(body):
-	
-	print("OUCH!")
 	
 	var effect : Node2D = BiteEffect.instance()
 	get_parent().add_child(effect)
@@ -66,3 +69,7 @@ func _on_Detector_body_entered(body):
 
 func _on_Detector_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
 	area.queue_free() # should only be XP nodes at this point...
+
+
+func _on_FirerateTimer_timeout():
+	can_shoot = true

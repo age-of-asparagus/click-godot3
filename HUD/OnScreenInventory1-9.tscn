@@ -1,0 +1,25 @@
+[gd_scene format=2]
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+modulate = Color( 1, 1, 1, 0.498039 )
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -70.0
+custom_constants/margin_right = 5
+custom_constants/margin_top = 5
+custom_constants/margin_left = 5
+custom_constants/margin_bottom = 5
+
+[node name="ItemList" type="ItemList" parent="MarginContainer"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 635.0
+margin_bottom = 65.0
+rect_min_size = Vector2( 630, 60 )
+items = [ "Item 0", null, false, "Item 1", null, false, "Item 2", null, true, "Item 3", null, true, "Item 4", null, false, "Item 5", null, false, "Item 6", null, false, "Item 7", null, false, "Item 8", null, false ]
+auto_height = true
+max_columns = 9
+fixed_column_width = 60

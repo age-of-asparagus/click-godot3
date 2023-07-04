@@ -24,9 +24,7 @@ func die():
 	var death_effect = DeathEffect.instance()
 	get_parent().add_child(death_effect)
 	death_effect.position = global_position
-	
-	get_parent().add_child(death_effect)
-	
+
 	var xpnode = XPNode.instance()
 	get_parent().add_child(xpnode)
 	xpnode.position = global_position
