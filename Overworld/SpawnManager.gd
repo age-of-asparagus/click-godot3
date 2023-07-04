@@ -10,7 +10,7 @@ func _ready():
 func _on_SpawnTimer_timeout():
 	var mob : KinematicBody2D = Mob.instance()
 	
-	get_tree().get_root().add_child(mob)
+	get_parent().add_child(mob)
 		
 	mob.position = Vector2(rand_range(0, screen_dimensions.x), rand_range(0, screen_dimensions.y))
 	
