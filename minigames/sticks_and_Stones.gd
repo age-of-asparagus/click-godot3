@@ -69,7 +69,7 @@ func _on_Upgrades_button_down():
 
 
 func _on_Overworld_button_down():
-	get_tree().change_scene_to_file("res://Overworld.tscn")
+	get_tree().change_scene("res://Overworld/Overworld.tscn")
 
 
 func _on_Back_button_down():
