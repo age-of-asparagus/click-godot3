@@ -8,9 +8,16 @@ var transitioning = false
 var rng = RandomNumberGenerator.new()
 
 func _ready():
+	get_node("CanvasLayer/fossil_panel/sell_amount").visible = false
+	get_node("CanvasLayer/fossil_panel/fossil_sell_amount").visible = false
+	get_node("CanvasLayer/stick_panel/sell_amount").visible = false
+	get_node("CanvasLayer/stick_panel/stick_sell_amount").visible = false
+	get_node("CanvasLayer/stone_panel/sell_amount").visible = false
+	get_node("CanvasLayer/stone_panel/stone_sell_amount").visible = false
 	rng.randomize()
 
 func _physics_process(delta):
+	
 	get_node("CanvasLayer/stone_panel/sell_amount").max_value = Global.stones
 	get_node("CanvasLayer/stone_panel/stone_sell_amount").text = String(get_node("CanvasLayer/stone_panel/sell_amount").value)
 	
@@ -31,7 +38,7 @@ func _physics_process(delta):
 	
 
 func _on_fossil_spawn_timer_timeout():
-	if rng.randi_range(0,100) <= 1:
+	if rng.randf_range(0,100) <= 0.5:
 		var fossil = Fossil.instance()
 		add_child(fossil)
 		fossil.rect_global_position = Vector2(rng.randi_range(100,560), rng.randi_range(50,350))
@@ -40,7 +47,7 @@ func _on_fossil_spawn_timer_timeout():
 	$fossil_spawn_timer.start()
 
 
-	
+
 func _on_stone_spawn_timer_timeout():
 	if rng.randi_range(0,100) <= 30:
 		var stone = Stone.instance()
