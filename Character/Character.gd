@@ -30,14 +30,14 @@ func _physics_process(delta):
 func shoot():
 	if Global.stones >= 1:
 		var projectile = Ammo.instance()
-		get_tree().get_root().add_child(projectile)
+		get_parent().add_child(projectile)
 		
 		projectile.global_transform = $Hand.global_transform
 		Global.stones -= 1
 		
 func die():
 	var death_effect : Node2D = DeathEffect.instance()
-	get_tree().get_root().add_child(death_effect)
+	get_parent().add_child(death_effect)
 	death_effect.position = global_position
 	queue_free()
 	
@@ -48,7 +48,7 @@ func _on_Detector_body_entered(body):
 	print("OUCH!")
 	
 	var effect : Node2D = BiteEffect.instance()
-	get_tree().get_root().add_child(effect)
+	get_parent().add_child(effect)
 	effect.position = body.global_position
 	
 	var bite_mark : Sprite = BiteMarkEffect.instance()
@@ -62,3 +62,7 @@ func _on_Detector_body_entered(body):
 	$HealthHUD.update_healthbar(health)
 	if health <= 0:
 		die()
+
+
+func _on_Detector_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
+	area.queue_free() # should only be XP nodes at this point...
