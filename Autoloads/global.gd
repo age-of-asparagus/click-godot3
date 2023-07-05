@@ -1,5 +1,7 @@
 extends Node
 
+
+var stick_stone_tokens = 0
 var fossils = 0
 var sticks = 100
 var stones = 100

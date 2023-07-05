@@ -1,5 +1,9 @@
 extends Node2D
 
+var stick_value = 1
+var stone_value = 2
+var fossil_value = 100
+
 var Stick = preload("res://Materials/Stick_button.tscn")
 var Stone = preload("res://Materials/Stone_button.tscn")
 var Fossil = preload("res://Materials/Fossil_button.tscn")
@@ -17,6 +21,7 @@ func _ready():
 	rng.randomize()
 
 func _physics_process(delta):
+	print(Global.stick_stone_tokens)
 	
 	get_node("CanvasLayer/stone_panel/sell_amount").max_value = Global.stones
 	get_node("CanvasLayer/stone_panel/stone_sell_amount").text = String(get_node("CanvasLayer/stone_panel/sell_amount").value)
@@ -101,3 +106,23 @@ func _on_Magnet_size_button_down():
 	Global.Stick_Stones_magnet_size += .05
 
 
+
+
+func _on_sell_button_button_down():
+	Global.stones -= get_node("CanvasLayer/stone_panel/sell_amount").value
+	Global.sticks -= get_node("CanvasLayer/stick_panel/sell_amount").value
+	Global.fossils -= get_node("CanvasLayer/fossil_panel/sell_amount").value
+	Global.stick_stone_tokens += get_node("CanvasLayer/stone_panel/sell_amount").value * stone_value + get_node("CanvasLayer/stick_panel/sell_amount").value * stick_value + get_node("CanvasLayer/fossil_panel/sell_amount").value * fossil_value
+	get_node("CanvasLayer/stone_panel/sell_amount").value = 0
+	get_node("CanvasLayer/stick_panel/sell_amount").value = 0
+	get_node("CanvasLayer/fossil_panel/sell_amount").value = 0
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

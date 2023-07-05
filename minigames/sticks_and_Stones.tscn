@@ -601,3 +601,4 @@ stretch_mode = 3
 [connection signal="button_down" from="Hover_mode" to="." method="_on_Hover_mode_button_down"]
 [connection signal="button_down" from="Spawn_rate" to="." method="_on_Spawn_rate_button_down"]
 [connection signal="button_down" from="Magnet_size" to="." method="_on_Magnet_size_button_down"]
+[connection signal="button_down" from="sell_button" to="." method="_on_sell_button_button_down"]
