@@ -1,9 +1,14 @@
-[gd_scene format=2]
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/Stone_material_32px.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Stick_material_32px.png" type="Texture" id=2]
+[ext_resource path="res://HUD/HUD.gd" type="Script" id=3]
 
 [node name="HUD" type="CanvasLayer"]
+script = ExtResource( 3 )
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-modulate = Color( 1, 1, 1, 0.498039 )
+modulate = Color( 1, 1, 1, 0.784314 )
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -17,9 +22,11 @@ custom_constants/margin_bottom = 5
 margin_left = 5.0
 margin_top = 5.0
 margin_right = 635.0
-margin_bottom = 65.0
+margin_bottom = 70.0
 rect_min_size = Vector2( 630, 60 )
-items = [ "Item 0", null, false, "Item 1", null, false, "Item 2", null, true, "Item 3", null, true, "Item 4", null, false, "Item 5", null, false, "Item 6", null, false, "Item 7", null, false, "Item 8", null, false ]
+items = [ "x 64", ExtResource( 2 ), false, "x 64", ExtResource( 1 ), false, "Item 2", null, true, "Item 3", null, true, "Item 4", null, true, "Item 5", null, true, "Item 6", null, true, "Item 7", null, true, "Item 8", null, true ]
 auto_height = true
 max_columns = 9
-fixed_column_width = 60
+same_column_width = true
+fixed_column_width = 63
+icon_mode = 0

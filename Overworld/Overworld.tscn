@@ -101,7 +101,6 @@ texture = ExtResource( 4 )
 [node name="KeyPrompt" type="AnimatedSprite" parent="ClickArea"]
 position = Vector2( 31.5, -33 )
 frames = SubResource( 4 )
-frame = 1
 playing = true
 
 [node name="Character" parent="." instance=ExtResource( 1 )]
