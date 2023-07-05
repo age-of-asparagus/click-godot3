@@ -17,6 +17,11 @@ func _process(delta):
 	if Input.is_action_just_pressed("2"):
 		$Character.set_item_index(1)
 		$HUD/MarginContainer/ItemList.select(1)
+		
+	if Input.is_action_just_pressed("restart"):
+		Global.stones = 100
+		Global.sticks = 100
+		get_tree().reload_current_scene()
 
 func _on_ClickArea_body_entered(body):
 	player_is_near = true
