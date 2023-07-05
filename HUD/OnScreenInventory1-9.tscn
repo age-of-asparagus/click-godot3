@@ -9,10 +9,13 @@ script = ExtResource( 3 )
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 modulate = Color( 1, 1, 1, 0.784314 )
+anchor_left = 0.5
 anchor_top = 1.0
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-margin_top = -70.0
+margin_left = -320.0
+margin_top = -75.0
+margin_right = 320.0
 custom_constants/margin_right = 5
 custom_constants/margin_top = 5
 custom_constants/margin_left = 5
@@ -24,7 +27,9 @@ margin_top = 5.0
 margin_right = 635.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 630, 60 )
-items = [ "x 64", ExtResource( 2 ), false, "x 64", ExtResource( 1 ), false, "Item 2", null, true, "Item 3", null, true, "Item 4", null, true, "Item 5", null, true, "Item 6", null, true, "Item 7", null, true, "Item 8", null, true ]
+mouse_filter = 2
+custom_colors/guide_color = Color( 0.494118, 0.0745098, 0.0745098, 1 )
+items = [ "x 64", ExtResource( 2 ), false, "x 64", ExtResource( 1 ), false ]
 auto_height = true
 max_columns = 9
 same_column_width = true

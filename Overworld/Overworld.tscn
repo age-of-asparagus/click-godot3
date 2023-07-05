@@ -100,14 +100,12 @@ texture = ExtResource( 4 )
 
 [node name="KeyPrompt" type="AnimatedSprite" parent="ClickArea"]
 position = Vector2( 31.5, -33 )
+z_index = 1
 frames = SubResource( 4 )
 playing = true
 
 [node name="Character" parent="." instance=ExtResource( 1 )]
 position = Vector2( 447, 250 )
-
-[node name="BaseMob" parent="." instance=ExtResource( 3 )]
-position = Vector2( 246, 130 )
 
 [connection signal="timeout" from="SpawnManager/SpawnTimer" to="SpawnManager" method="_on_SpawnTimer_timeout"]
 [connection signal="body_entered" from="ClickArea" to="." method="_on_ClickArea_body_entered"]

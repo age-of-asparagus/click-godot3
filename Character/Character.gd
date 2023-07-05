@@ -1,11 +1,12 @@
 extends KinematicBody2D
 
+export(Array, PackedScene) var items
+
 export var DeathEffect : PackedScene
 export var BiteEffect : PackedScene
 export var BiteMarkEffect : PackedScene
 
-export var speed := 200
-export var Ammo : PackedScene
+export var speed := 150
 export var max_health := 10
 onready var health = max_health
 
@@ -14,6 +15,7 @@ var movement_direction = 0
 var target_rotation = 0
 var velocity
 var can_shoot = true
+var item_selected = 0
 
 func _physics_process(delta):
 	rotation = get_global_mouse_position().angle_to_point(position)
@@ -28,15 +30,24 @@ func _physics_process(delta):
 	if Input.is_action_pressed("shoot"):
 		if can_shoot:
 			shoot()
-
+			
+func set_item_index(index: int):
+	item_selected = index
 
 func shoot():
-	if Global.stones >= 1:
-		var projectile = Ammo.instance()
+	if (item_selected == 0 and Global.sticks >= 1) or \
+	   (item_selected == 1 and Global.stones >= 1):
+		
+		var projectile = items[item_selected].instance()
+		projectile.global_transform = $Hand.global_transform
 		get_parent().add_child(projectile)
 		
-		projectile.global_transform = $Hand.global_transform
-		Global.stones -= 1
+		match item_selected:
+			0:
+				Global.sticks -= 1
+			1:
+				Global.stones -= 1
+					
 		can_shoot = false
 		$FirerateTimer.start()
 		

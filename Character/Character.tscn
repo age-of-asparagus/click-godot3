@@ -1,14 +1,15 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Downloaded/barHorizontal_green.png" type="Texture" id=2]
 [ext_resource path="res://Character/Character.gd" type="Script" id=3]
-[ext_resource path="res://Weapons/Stone.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Items/Stick.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Effects/BloodSplatterHuge.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Effects/FadingSplatterBase.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Assets/half_zombie_and_human.png" type="Texture" id=7]
 [ext_resource path="res://Character/HealthDisplay.gd" type="Script" id=8]
 [ext_resource path="res://Effects/BiteMarkEffect.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Items/Stone.tscn" type="PackedScene" id=10]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 17.0294
@@ -54,10 +55,10 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
 }
+items = [ ExtResource( 4 ), ExtResource( 10 ) ]
 DeathEffect = ExtResource( 5 )
 BiteEffect = ExtResource( 6 )
 BiteMarkEffect = ExtResource( 9 )
-Ammo = ExtResource( 4 )
 
 [node name="HealthHUD" type="Node2D" parent="."]
 script = ExtResource( 8 )
