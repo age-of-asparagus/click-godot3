@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 export var speed := 50
+export var health := 3
 export var DeathEffect : PackedScene
 export var XPNode : PackedScene
 var velocity
@@ -8,6 +9,7 @@ var velocity
 func _ready():
 	# set speed in Y direction then rotate in random direction
 	velocity = Vector2(speed, 0).rotated(rotation)
+	$HealthStat.set_max_health(health)
 	
 func _physics_process(delta):
 	move_and_slide(velocity)
@@ -27,4 +29,6 @@ func die():
 
 func _on_WeaponDetector_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
 	area.queue_free() # delete thing that hit mob
-	die()
+	$HealthStat.adjust_health(-area.damage)
+	if $HealthStat.health <= 0:
+		die()

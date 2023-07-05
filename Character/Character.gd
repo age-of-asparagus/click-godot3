@@ -7,8 +7,6 @@ export var BiteEffect : PackedScene
 export var BiteMarkEffect : PackedScene
 
 export var speed := 150
-export var max_health := 10
-onready var health = max_health
 
 var rotation_direction = 0
 var movement_direction = 0
@@ -27,7 +25,7 @@ func _physics_process(delta):
 		$AnimatedSprite.stop()
 	move_and_slide(velocity)	
 	
-	if Input.is_action_pressed("shoot"):
+	if Input.is_action_just_pressed("shoot"):
 		if can_shoot:
 			shoot()
 			
@@ -72,9 +70,8 @@ func _on_Detector_body_entered(body):
 	
 	body.queue_free()
 	
-	health -= 1
-	$HealthHUD.update_healthbar(health)
-	if health <= 0:
+	$HealthStat.adjust_health(-1)
+	if $HealthStat.health <= 0:
 		die()
 
 

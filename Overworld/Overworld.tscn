@@ -49,7 +49,7 @@ curve = SubResource( 5 )
 [node name="MobSpawnLocation" type="PathFollow2D" parent="SpawnManager/ScreenEdgePath"]
 
 [node name="SpawnTimer" type="Timer" parent="SpawnManager"]
-wait_time = 0.1
+wait_time = 0.5
 autostart = true
 
 [node name="ClickArea" type="Area2D" parent="."]
@@ -113,6 +113,7 @@ texture = ExtResource( 4 )
 position = Vector2( 31.5, -33 )
 z_index = 2
 frames = SubResource( 4 )
+frame = 1
 playing = true
 
 [node name="Character" parent="." instance=ExtResource( 1 )]
