@@ -4,7 +4,7 @@ export var speed := 50
 export var health := 3
 export var DeathEffect : PackedScene
 export var XPNode : PackedScene
-var velocity
+var velocity : Vector2
 
 func _ready():
 	# set speed in Y direction then rotate in random direction
@@ -13,6 +13,14 @@ func _ready():
 	
 func _physics_process(delta):
 	move_and_slide(velocity)
+	
+	# Change direction if hit an obstacle
+	if get_slide_count() > 0:
+		var collision = get_slide_collision(0)
+		if collision != null:
+			velocity = velocity.bounce(collision.normal)
+			# Rotate the mob to face new movement direction
+			rotation = velocity.angle()
 	
 func die():
 	var parent = get_parent()

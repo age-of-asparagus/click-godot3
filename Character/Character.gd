@@ -16,7 +16,7 @@ var can_shoot = true
 var item_selected = 0
 
 func _physics_process(delta):
-	rotation = get_global_mouse_position().angle_to_point(position)
+	rotation = get_global_mouse_position().angle_to_point(global_position)
 	var input_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	velocity = input_direction * speed
 	if velocity != Vector2.ZERO:
