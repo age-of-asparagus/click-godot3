@@ -21,14 +21,16 @@ func _ready():
 	rng.randomize()
 
 func _physics_process(delta):
-	get_node("Fossil_panel/token_amount").text = String(Global.stick_stone_tokens)
+	get_node("Hover_mode/price").text = "$" + String(Global.hover_mode_price)
+	get_node("Spawn_rate/price").text = "$" + String(Global.spawn_rate_upgrade_price)
+	get_node("Magnet_size/price").text = "$" + String(Global.magnet_upgrade_price)
+	
+	get_node("token_panel/token_amount").text = String(Global.stick_stone_tokens)
 	
 	get_node("CanvasLayer/stone_panel/sell_amount").max_value = Global.stones
 	get_node("CanvasLayer/stone_panel/stone_sell_amount").text = String(get_node("CanvasLayer/stone_panel/sell_amount").value)
-	
 	get_node("CanvasLayer/stick_panel/sell_amount").max_value = Global.sticks
 	get_node("CanvasLayer/stick_panel/stick_sell_amount").text = String(get_node("CanvasLayer/stick_panel/sell_amount").value)
-	
 	get_node("CanvasLayer/fossil_panel/sell_amount").max_value = Global.fossils
 	get_node("CanvasLayer/fossil_panel/fossil_sell_amount").text = String(get_node("CanvasLayer/fossil_panel/sell_amount").value)
 	
