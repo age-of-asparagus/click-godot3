@@ -12,11 +12,11 @@ func _process(delta):
 	
 	if Input.is_action_just_pressed("1"):
 		$Character.set_item_index(0)
-		$HUD/MarginContainer/ItemList.select(0)
+		$HUD/ItemList.select(0)
 		
 	if Input.is_action_just_pressed("2"):
 		$Character.set_item_index(1)
-		$HUD/MarginContainer/ItemList.select(1)
+		$HUD/ItemList.select(1)
 		
 	if Input.is_action_just_pressed("restart"):
 		Global.stones = 100
