@@ -7,17 +7,16 @@
 [sub_resource type="CircleShape2D" id=1]
 
 [node name="Fossil_button" instance=ExtResource( 1 )]
-margin_right = 22.0
-margin_bottom = 20.0
-texture_normal = ExtResource( 3 )
-expand = true
-stretch_mode = 3
 script = ExtResource( 2 )
 
-[node name="Area2D" parent="." index="2"]
-position = Vector2( 11, 9 )
-
-[node name="CollisionShape2D" parent="Area2D" index="0"]
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2( 0, -1 )
 shape = SubResource( 1 )
 
-[connection signal="button_down" from="." to="." method="_on_Fossil_button_button_down"]
+[node name="AnimationPlayer" parent="." index="2"]
+root_node = NodePath("..")
+
+[node name="Sprite" parent="." index="3"]
+texture = ExtResource( 3 )
+
+[connection signal="timeout" from="disappear_timer" to="." method="_on_disappear_timer_timeout"]

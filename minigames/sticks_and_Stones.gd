@@ -54,7 +54,7 @@ func _on_fossil_spawn_timer_timeout():
 		var fossil = Fossil.instance()
 		add_child(fossil)
 		fossil.rect_global_position = Vector2(rng.randi_range(100,560), rng.randi_range(50,350))
-		fossil.rect_rotation = rng.randi_range(0,360)
+		fossil.ion = rng.randi_range(0,360)
 	$fossil_spawn_timer.wait_time = 1 * Global.Stick_Stones_spawn_rate
 	$fossil_spawn_timer.start()
 
@@ -64,8 +64,8 @@ func _on_stone_spawn_timer_timeout():
 	if rng.randi_range(0,100) <= 30:
 		var stone = Stone.instance()
 		add_child(stone)
-		stone.rect_global_position = Vector2(rng.randi_range(100,560), rng.randi_range(50,350))
-		stone.rect_rotation = rng.randi_range(0,360)
+		stone.global_position = Vector2(rng.randi_range(100,560), rng.randi_range(50,350))
+		stone.rotation = rng.randi_range(0,360)
 	$stone_spawn_timer.wait_time = rng.randf_range(0.25,1.5) * Global.Stick_Stones_spawn_rate
 	$stone_spawn_timer.start()
 
@@ -73,8 +73,8 @@ func _on_stick_spawn_timer_timeout():
 	if rng.randi_range(0,100) <= 60:
 		var stick = Stick.instance()
 		add_child(stick)
-		stick.rect_global_position = Vector2(rng.randi_range(100,560), rng.randi_range(50,350))
-		stick.rect_rotation = rng.randi_range(0,360)
+		stick.global_position = Vector2(rng.randi_range(100,560), rng.randi_range(50,350))
+		stick.rotation = rng.randi_range(0,360)
 	$stick_spawn_timer.wait_time = rng.randf_range(0.2,1.25) * Global.Stick_Stones_spawn_rate
 	$stick_spawn_timer.start()
 

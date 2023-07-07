@@ -1,27 +1,13 @@
-[gd_scene load_steps=4 format=2]
-
-[ext_resource path="res://Materials/Blank_button.gd" type="Script" id=1]
+[gd_scene load_steps=3 format=2]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:rect_scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 1, 1 ) ]
-}
 
 [sub_resource type="Animation" id=2]
 resource_name = "size"
 length = 0.7
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:rect_scale")
+tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -33,24 +19,19 @@ tracks/0/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 0.1, 0.1 ), Vector2( 1e-05, 1e-05 ) ]
 }
 
-[node name="Blank_button" type="TextureButton"]
-margin_right = 40.0
-margin_bottom = 40.0
-script = ExtResource( 1 )
+[node name="Area2D" type="Area2D"]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
 [node name="disappear_timer" type="Timer" parent="."]
 autostart = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("")
 anims/RESET = SubResource( 1 )
 anims/size = SubResource( 2 )
 
-[node name="Area2D" type="Area2D" parent="."]
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-
-[connection signal="button_down" from="." to="." method="_on_Blank_button_button_down"]
-[connection signal="timeout" from="disappear_timer" to="." method="_on_disappear_timer_timeout"]
+[node name="Sprite" type="Sprite" parent="."]
