@@ -21,17 +21,17 @@ func _ready():
 	rng.randomize()
 
 func _physics_process(delta):
-	get_node("Hover_mode/price").text = "$" + String(Global.hover_mode_price)
-	get_node("Spawn_rate/price").text = "$" + String(Global.spawn_rate_upgrade_price)
-	get_node("Magnet_size/price").text = "$" + String(Global.magnet_upgrade_price)
+	get_node("Hover_mode/price").text = "$" + String(Global.stick_stone_hover_mode_price)
+	get_node("Spawn_rate/price").text = "$" + String(Global.stick_stone_spawn_rate_upgrade_price)
+	get_node("Magnet_size/price").text = "$" + String(Global.stick_stone_magnet_upgrade_price)
 	
 	get_node("token_panel/token_amount").text = String(Global.stick_stone_tokens)
 	
-	get_node("CanvasLayer/stone_panel/sell_amount").max_value = Global.stones
+	get_node("CanvasLayer/stone_panel/sell_amount").max_value = Global.stone.count
 	get_node("CanvasLayer/stone_panel/stone_sell_amount").text = String(get_node("CanvasLayer/stone_panel/sell_amount").value)
-	get_node("CanvasLayer/stick_panel/sell_amount").max_value = Global.sticks
+	get_node("CanvasLayer/stick_panel/sell_amount").max_value = Global.stick.count
 	get_node("CanvasLayer/stick_panel/stick_sell_amount").text = String(get_node("CanvasLayer/stick_panel/sell_amount").value)
-	get_node("CanvasLayer/fossil_panel/sell_amount").max_value = Global.fossils
+	get_node("CanvasLayer/fossil_panel/sell_amount").max_value = Global.fossil.count
 	get_node("CanvasLayer/fossil_panel/fossil_sell_amount").text = String(get_node("CanvasLayer/fossil_panel/sell_amount").value)
 	
 	if get_node("CanvasLayer/stick_panel/sell_amount").value + get_node("CanvasLayer/fossil_panel/sell_amount").value + get_node("CanvasLayer/stone_panel/sell_amount").value >= 1:
@@ -44,9 +44,9 @@ func _physics_process(delta):
 	$Mouse_area/Magnet_effect.global_position = get_global_mouse_position()
 	$Mouse_area/CollisionShape2D.scale = Vector2(Global.stick_stones_magnet_size, Global.stick_stones_magnet_size)
 	$Mouse_area/CollisionShape2D.global_position = get_global_mouse_position()
-	$CanvasLayer.get_node("stone_panel/stone_amount").set_text("x" + str(Global.stones))
-	$CanvasLayer.get_node("stick_panel/stick_amount").set_text("x" + str(Global.sticks))
-	$CanvasLayer.get_node("fossil_panel/fossil_amount").set_text("x" + str(Global.fossils))
+	$CanvasLayer.get_node("stone_panel/stone_amount").set_text("x" + str(Global.stone.count))
+	$CanvasLayer.get_node("stick_panel/stick_amount").set_text("x" + str(Global.stick.count))
+	$CanvasLayer.get_node("fossil_panel/fossil_amount").set_text("x" + str(Global.fossil.count))
 	
 
 func _on_fossil_spawn_timer_timeout():
@@ -100,33 +100,39 @@ func _on_Back_button_down():
 
 
 func _on_Hover_mode_button_down():
-	if Global.stick_stone_tokens >= Global.hover_mode_price and Global.stick_stones_hover_mode == false:
-		Global.stick_stone_tokens -= Global.hover_mode_price
+	if Global.stick_stone_tokens >= Global.stick_stone_hover_mode_price and Global.stick_stones_hover_mode == false:
+		Global.stick_stone_tokens -= Global.stick_stone_hover_mode_price
 		Global.stick_stones_hover_mode = true
 
 
 func _on_Spawn_rate_button_down():
-	if Global.stick_stones_spawn_rate >= 0.02 and Global.stick_stone_tokens >= Global.spawn_rate_upgrade_price:
-		Global.stick_stone_tokens -= Global.spawn_rate_upgrade_price
-		Global.spawn_rate_upgrade_price = round(Global.spawn_rate_upgrade_price * 1.075)
-		Global.stick_stones_spawn_rate -= 0.05
-		Global.stick_stones_spawn_rate_level += 1
+	if Global.stick_stone_spawn_rate_level <= 18:
+		if Global.stick_stones_spawn_rate >= 0.02 and Global.stick_stone_tokens >= Global.stick_stone_spawn_rate_upgrade_price:
+			Global.stick_stone_tokens -= Global.stick_stone_spawn_rate_upgrade_price
+			Global.stick_stone_spawn_rate_upgrade_price = round(Global.stick_stone_spawn_rate_upgrade_price * 1.075)
+			Global.stick_stones_spawn_rate -= 0.05
+			Global.stick_stone_spawn_rate_level += 1
 
 
 
 func _on_Magnet_size_button_down():
-	if Global.stick_stone_tokens >= Global.magnet_upgrade_price:
-		Global.stick_stone_tokens -= Global.magnet_upgrade_price
-		Global.magnet_upgrade_price = round(Global.magnet_upgrade_price * 1.05)
-		Global.stick_stones_magnet_size += .30
-		Global.stick_stones_magnet_size_level += 1
+	if Global.stick_stone_magnet_level <= 75:
+		if Global.stick_stone_tokens >= Global.stick_stone_magnet_upgrade_price:
+			Global.stick_stone_tokens -= Global.stick_stone_magnet_upgrade_price
+			Global.stick_stone_magnet_upgrade_price = round(Global.stick_stone_magnet_upgrade_price * 1.05)
+			Global.stick_stones_magnet_size += .30
+			Global.stick_stone_magnet_level += 1
 
+
+
+func _on_spawn_amount_button_down():
+	pass # Replace with function body.
 
 
 func _on_sell_button_button_down():
-	Global.stones -= get_node("CanvasLayer/stone_panel/sell_amount").value
-	Global.sticks -= get_node("CanvasLayer/stick_panel/sell_amount").value
-	Global.fossils -= get_node("CanvasLayer/fossil_panel/sell_amount").value
+	Global.stone.count -= get_node("CanvasLayer/stone_panel/sell_amount").value
+	Global.stick.count -= get_node("CanvasLayer/stick_panel/sell_amount").value
+	Global.fossil.count -= get_node("CanvasLayer/fossil_panel/sell_amount").value
 	Global.stick_stone_tokens += get_node("CanvasLayer/stone_panel/sell_amount").value * stone_value + get_node("CanvasLayer/stick_panel/sell_amount").value * stick_value + get_node("CanvasLayer/fossil_panel/sell_amount").value * fossil_value
 	get_node("CanvasLayer/stone_panel/sell_amount").value = 0
 	get_node("CanvasLayer/stick_panel/sell_amount").value = 0
@@ -134,11 +140,6 @@ func _on_sell_button_button_down():
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+

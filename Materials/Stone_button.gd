@@ -23,7 +23,7 @@ func _physics_process(delta):
 			speed *= 1.05
 		global_position += Vector2(stone_label_position - global_position).normalized() * speed
 		if stone_label_position.distance_to(global_position) <= 50:
-			Global.stones += 1
+			Global.stone.count += 1
 			queue_free()
 
 func _on_disappear_timer_timeout():
