@@ -7,7 +7,6 @@ radius = 5.0
 height = 4.0
 
 [node name="BushSmall" type="Sprite"]
-position = Vector2( 641, 360 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 1 )
 offset = Vector2( 1, 0 )

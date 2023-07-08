@@ -19,8 +19,8 @@ func _process(delta):
 		$HUD/ItemList.select(1)
 		
 	if Input.is_action_just_pressed("restart"):
-		Global.stones = 100
-		Global.sticks = 100
+		Global.stone.count = 100
+		Global.stick.count = 100
 		get_tree().reload_current_scene()
 
 func _on_ClickArea_body_entered(body):

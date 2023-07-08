@@ -1,8 +1,12 @@
 extends Area2D
 
+class_name GameItem
+
+export var label := "Item"
 export var damage := 1
 export var speed := 500
 export var max_distance := 1000
+export var is_pickupable := true
 export var lifetime_seconds := 2
 export var rotation_speed := 10
 export var randomness := 0.2
@@ -40,5 +44,8 @@ func _physics_process(delta):
 		position += transform.x * speed * delta
 		$Sprite.rotation += rotation_speed * delta
 	else:
-		monitorable = false
-	
+		# Not longer acting as a weapon, so turn off the "Weapon" collision layer
+		set_collision_layer_bit(2, false)
+		if is_pickupable:
+			# Turn on collectable layer
+			set_collision_layer_bit(4, true)

@@ -13,7 +13,7 @@ var movement_direction = 0
 var target_rotation = 0
 var velocity
 var can_shoot = true
-var item_selected = 0
+var item_selected = Global.items.keys()[0]  # get the first key which is "Stick"
 
 func _physics_process(delta):
 	rotation = get_global_mouse_position().angle_to_point(global_position)
@@ -30,21 +30,16 @@ func _physics_process(delta):
 			shoot()
 			
 func set_item_index(index: int):
-	item_selected = index
+	item_selected = Global.items.keys()[index]
 
 func shoot():
-	if (item_selected == 0 and Global.sticks >= 1) or \
-	   (item_selected == 1 and Global.stones >= 1):
+	if Global.items[item_selected].count > 0:
 		
-		var projectile = items[item_selected].instance()
+		var projectile = Global.items[item_selected].packed_scene.instance()
 		projectile.global_transform = $Hand.global_transform
 		get_parent().add_child(projectile)
-		
-		match item_selected:
-			0:
-				Global.sticks -= 1
-			1:
-				Global.stones -= 1
+
+		Global.items[item_selected].count -= 1
 					
 		can_shoot = false
 		$FirerateTimer.start()
@@ -67,7 +62,6 @@ func _on_Detector_body_entered(body):
 	add_child(bite_mark)
 	var bite_position = body.global_position - (body.global_position - global_position)*0.7
 	bite_mark.global_position = bite_position
-	
 	body.queue_free()
 	
 	$HealthStat.adjust_health(-1)
@@ -76,8 +70,13 @@ func _on_Detector_body_entered(body):
 
 
 func _on_Detector_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
-	area.queue_free() # should only be XP nodes at this point...
 
+	if area.is_in_group("items"):
+		print("Collecting item")
+		area.queue_free() 
+	else:
+		# should only be XP nodes at this point...
+		area.queue_free() 
 
 func _on_FirerateTimer_timeout():
 	can_shoot = true
