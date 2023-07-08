@@ -28,7 +28,7 @@ var fossil = GameItemData.new(
 		"Fossil", 
 		100, 
 		load("res://Assets/Fossil_material-1.png (2).png"),
-		preload("res://Items/BaseItem.tscn")
+		preload("res://Items/Fossil.tscn")
 	)
 
 var items = {

@@ -3,7 +3,7 @@
 [ext_resource path="res://Items/BaseItem.tscn" type="PackedScene" id=1]
 
 [node name="Item" instance=ExtResource( 1 )]
-label = "Stick"
-speed = 200
-max_distance = 150
-lifetime_seconds = 4
+label = "Fossil"
+damage = 100
+destroy_on_contact = false
+speed = 1000

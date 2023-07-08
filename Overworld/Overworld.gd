@@ -10,14 +10,17 @@ func _process(delta):
 	else:
 		$ClickArea/KeyPrompt.visible = false
 	
-	if Input.is_action_just_pressed("1"):
-		$Character.set_item_index(0)
-		$HUD/ItemList.select(0)
-		
-	if Input.is_action_just_pressed("2"):
-		$Character.set_item_index(1)
-		$HUD/ItemList.select(1)
-		
+	# loop through each of the hotbar hotkeys to see if pressed
+	for i in range(0, $HUD/ItemList.get_item_count()):
+		# each number key is mapped to an action, e.g. keypad 1 is mapped to action "1".
+		# so for the first i=0, we add 1 and convert to a string to get "1"
+		if Input.is_action_just_pressed(str(i+1)):
+			if not $HUD/ItemList.is_item_disabled(i):
+				$Character.set_item_index(i)
+				$HUD/ItemList.select(i)
+			else:
+				print("Item " + str(i+1) + " is not enabled yet")
+
 	if Input.is_action_just_pressed("restart"):
 		Global.stone.count = 100
 		Global.stick.count = 100
