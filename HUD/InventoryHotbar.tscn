@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://HUD/HUD.gd" type="Script" id=3]
+[ext_resource path="res://Fonts/PublicPixel-z84yD.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://icon.png" type="Texture" id=5]
+
+[sub_resource type="Theme" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 8
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 4 )
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource( 3 )
+
+[node name="ItemList" type="ItemList" parent="."]
+modulate = Color( 1, 1, 1, 0.784314 )
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -154.0
+margin_top = -35.0
+margin_right = 154.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = SubResource( 2 )
+custom_colors/guide_color = Color( 0, 0, 0, 1 )
+custom_constants/line_separation = -5
+custom_constants/icon_margin = -5
+custom_constants/hseparation = -5
+custom_fonts/font = SubResource( 1 )
+items = [ "0", ExtResource( 5 ), true, "0", ExtResource( 5 ), true, "0", ExtResource( 5 ), true, "0", ExtResource( 5 ), true, "0", ExtResource( 5 ), true, "0", ExtResource( 5 ), true, "0", ExtResource( 5 ), true, "0", ExtResource( 5 ), true ]
+max_columns = 10
+same_column_width = true
+fixed_column_width = 41
+icon_mode = 0
+fixed_icon_size = Vector2( 24, 24 )
