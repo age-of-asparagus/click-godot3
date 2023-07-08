@@ -10,7 +10,7 @@ var fossil_label_position
 
 func _physics_process(delta):
 	if overlaps_area(mouse) == true:
-		if Global.Stick_Stones_hover_mode == true:
+		if Global.stick_stones_hover_mode == true:
 			fossil_label_position = get_parent().get_node("CanvasLayer").get_node("fossil_panel/Position2D").global_position
 			clicked = true
 			$AnimationPlayer.play("size")
