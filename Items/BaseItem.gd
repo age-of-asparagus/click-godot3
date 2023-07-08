@@ -4,6 +4,7 @@ class_name GameItem
 
 export var label := "Item"
 export var damage := 1
+export var destroy_on_contact := true
 export var speed := 500
 export var max_distance := 1000
 export var is_pickupable := true
@@ -12,14 +13,13 @@ export var rotation_speed := 10
 export var randomness := 0.2
 
 export var texture_scale := 1.0
-export(Texture) var texture  
 
 var age_seconds := 0.0
 
 onready var initial_position = global_position
 
 func _ready():
-	$Sprite.texture = texture
+	$Sprite.texture = Global.items[label].texture
 	$Sprite.scale = Vector2(texture_scale, texture_scale)
 	
 	# add a little bit of randomness to rotation and distance and speed

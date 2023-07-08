@@ -36,7 +36,8 @@ func die():
 	queue_free()
 
 func _on_WeaponDetector_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
-	area.queue_free() # delete thing that hit mob
+	if area.destroy_on_contact:
+		area.queue_free() # delete thing that hit mob
 	$HealthStat.adjust_health(-area.damage)
 	if $HealthStat.health <= 0:
 		die()

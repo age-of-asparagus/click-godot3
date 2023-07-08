@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://Items/BaseItem.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Assets/Stone_material_32px.png" type="Texture" id=2]
 
 [node name="Item" instance=ExtResource( 1 )]
 label = "Stone"
@@ -9,4 +8,3 @@ damage = 2
 max_distance = 300
 lifetime_seconds = 5
 texture_scale = 0.6
-texture = ExtResource( 2 )
