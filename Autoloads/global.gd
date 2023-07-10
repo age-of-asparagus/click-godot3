@@ -14,19 +14,19 @@ class GameItemData:
 		
 var stick = GameItemData.new(
 		"Stick", 
-		100, 
+		0, 
 		load("res://Assets/Stick_material_32px.png"),
 		preload("res://Items/Stick.tscn")
 	)
 var stone = GameItemData.new(
 		"Stone", 
-		100, 
+		0, 
 		load("res://Assets/Stone_material_32px.png"),
 		preload("res://Items/Stone.tscn")
 	)
 var fossil = GameItemData.new(
 		"Fossil", 
-		100000000, 
+		0, 
 		load("res://Assets/Fossil_material-1.png (2).png"),
 		preload("res://Items/Fossil.tscn")
 	)
