@@ -24,6 +24,7 @@ func _physics_process(delta):
 	get_node("Hover_mode/price").text = "$" + String(Global.stick_stone_hover_mode_price)
 	get_node("Spawn_rate/price").text = "$" + String(Global.stick_stone_spawn_rate_upgrade_price)
 	get_node("Magnet_size/price").text = "$" + String(Global.stick_stone_magnet_upgrade_price)
+	get_node("spawn_amount/price").text = "$" + String(Global.stick_stone_spawn_amount_upgrade_price)
 	
 	get_node("token_panel/token_amount").text = String(Global.stick_stone_tokens)
 	
@@ -50,11 +51,12 @@ func _physics_process(delta):
 	
 
 func _on_fossil_spawn_timer_timeout():
-	if rng.randf_range(0,100) <= 0.5:
-		var fossil = Fossil.instance()
-		add_child(fossil)
-		fossil.global_position = Vector2(rng.randi_range(100,560), rng.randi_range(50,350))
-		fossil.global_rotation = rng.randi_range(0,360)
+	if rng.randf_range(0,100) <= .75:
+		for i in range(Global.stick_stones_spawn_amount):
+			var fossil = Fossil.instance()
+			add_child(fossil)
+			fossil.global_position = Vector2(rng.randi_range(100,560), rng.randi_range(50,350))
+			fossil.global_rotation = rng.randi_range(0,360)
 	$fossil_spawn_timer.wait_time = 1 * Global.stick_stones_spawn_rate
 	$fossil_spawn_timer.start()
 
@@ -62,19 +64,21 @@ func _on_fossil_spawn_timer_timeout():
 
 func _on_stone_spawn_timer_timeout():
 	if rng.randi_range(0,100) <= 30:
-		var stone = Stone.instance()
-		add_child(stone)
-		stone.global_position = Vector2(rng.randi_range(100,560), rng.randi_range(50,350))
-		stone.rotation = rng.randi_range(0,360)
+		for i in range(Global.stick_stones_spawn_amount):
+			var stone = Stone.instance()
+			add_child(stone)
+			stone.global_position = Vector2(rng.randi_range(100,560), rng.randi_range(50,350))
+			stone.rotation = rng.randi_range(0,360)
 	$stone_spawn_timer.wait_time = rng.randf_range(0.25,1.5) * Global.stick_stones_spawn_rate
 	$stone_spawn_timer.start()
 
 func _on_stick_spawn_timer_timeout():
 	if rng.randi_range(0,100) <= 60:
-		var stick = Stick.instance()
-		add_child(stick)
-		stick.global_position = Vector2(rng.randi_range(100,560), rng.randi_range(50,350))
-		stick.rotation = rng.randi_range(0,360)
+		for i in range(Global.stick_stones_spawn_amount):
+			var stick = Stick.instance()
+			add_child(stick)
+			stick.global_position = Vector2(rng.randi_range(100,560), rng.randi_range(50,350))
+			stick.rotation = rng.randi_range(0,360)
 	$stick_spawn_timer.wait_time = rng.randf_range(0.2,1.25) * Global.stick_stones_spawn_rate
 	$stick_spawn_timer.start()
 
@@ -120,13 +124,18 @@ func _on_Magnet_size_button_down():
 		if Global.stick_stone_tokens >= Global.stick_stone_magnet_upgrade_price:
 			Global.stick_stone_tokens -= Global.stick_stone_magnet_upgrade_price
 			Global.stick_stone_magnet_upgrade_price = round(Global.stick_stone_magnet_upgrade_price * 1.05)
-			Global.stick_stones_magnet_size += .30
+			Global.stick_stones_magnet_size += .3
 			Global.stick_stone_magnet_level += 1
 
 
 
 func _on_spawn_amount_button_down():
-	pass # Replace with function body.
+	if Global.stick_stone_spawn_amount_level <= 3:
+		if Global.stick_stone_tokens >= Global.stick_stone_spawn_amount_upgrade_price:
+			Global.stick_stone_tokens -= Global.stick_stone_spawn_amount_upgrade_price
+			Global.stick_stone_spawn_amount_upgrade_price = round(Global.stick_stone_spawn_amount_upgrade_price * 10)
+			Global.stick_stone_spawn_amount_level += 1
+			Global.stick_stones_spawn_amount *= 2
 
 
 func _on_sell_button_button_down():

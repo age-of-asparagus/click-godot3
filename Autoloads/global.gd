@@ -26,7 +26,7 @@ var stone = GameItemData.new(
 	)
 var fossil = GameItemData.new(
 		"Fossil", 
-		1000, 
+		100000000, 
 		load("res://Assets/Fossil_material-1.png (2).png"),
 		preload("res://Items/Fossil.tscn")
 	)
@@ -40,6 +40,10 @@ var items = {
 
 
 var stick_stone_tokens = 0
+
+var stick_stones_spawn_amount = 1
+var stick_stone_spawn_amount_upgrade_price = 100
+var stick_stone_spawn_amount_level = 0
 
 var stick_stones_magnet_size = 1
 var stick_stone_magnet_upgrade_price = 30

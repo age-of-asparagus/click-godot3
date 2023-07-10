@@ -124,7 +124,6 @@ texture = ExtResource( 4 )
 position = Vector2( 26, -24 )
 z_index = 2
 frames = SubResource( 4 )
-frame = 1
 playing = true
 
 [node name="Character" parent="." instance=ExtResource( 1 )]
