@@ -2,11 +2,13 @@ extends Node2D
 
 var player_is_near := false
 
+signal transition
+
 func _process(delta):
 	if player_is_near:
 		$ClickArea/KeyPrompt.visible = true
 		if Input.is_action_just_pressed("interact"):
-			get_tree().change_scene("res://minigames/sticks_and_Stones.tscn")
+			emit_signal("transition")
 	else:
 		$ClickArea/KeyPrompt.visible = false
 	
@@ -20,11 +22,6 @@ func _process(delta):
 				$HUD/ItemList.select(i)
 			else:
 				print("Item " + str(i+1) + " is not enabled yet")
-
-	if Input.is_action_just_pressed("restart"):
-		Global.stone.count = 100
-		Global.stick.count = 100
-		get_tree().reload_current_scene()
 
 func _on_ClickArea_body_entered(body):
 	player_is_near = true

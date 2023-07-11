@@ -50,7 +50,6 @@ func die():
 	death_effect.position = global_position
 	queue_free()
 	
-	
 
 func _on_Detector_body_entered(body):
 	

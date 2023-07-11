@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Area2D",
+"class": "GameItem",
+"language": "GDScript",
+"path": "res://Items/BaseItem.gd"
+} ]
+_global_script_class_icons={
+"GameItem": ""
+}
+
 [application]
 
 config/name="Click - Godot 3"

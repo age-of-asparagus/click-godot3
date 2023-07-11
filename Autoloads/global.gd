@@ -55,3 +55,32 @@ var stick_stone_spawn_rate_level = 0
 
 var stick_stones_hover_mode = false
 var stick_stone_hover_mode_price = 1000
+
+func set_pause_node(node : Node, pause : bool) -> void:
+	node.set_physics_process(!pause)
+	node.set_process(!pause)
+	node.set_process_input(!pause)
+	node.set_process_unhandled_input(!pause)
+	node.set_process_unhandled_key_input(!pause)
+	
+	if node is Timer:
+		node.paused = pause
+		
+	if node is AnimationPlayer:
+		if pause:
+			node.stop(false)  # false means pause at current frame
+		else:
+			node.play()
+			
+	if node is AnimatedSprite:
+		if pause:
+			node.stop()
+		else:
+			node.play()
+		
+	
+func set_pause_tree(rootNode : Node, pause : bool, ignoredChilds : PoolStringArray = [null]):
+		set_pause_node(rootNode, pause)
+		for node in rootNode.get_children():
+			if not (String(node.get_path()) in ignoredChilds):
+				set_pause_tree(node, pause, ignoredChilds)
