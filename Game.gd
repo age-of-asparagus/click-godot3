@@ -23,9 +23,11 @@ func transition(to_minigame : bool = true):
 	
 	# add minigame during transition animation
 	if to_minigame:
+		$Overworld/HUD.visible = false
 		scene = MiniGameScene.instance()
 		add_child(scene)
 	else:
+		$Overworld/HUD.visible = true
 		$Overworld/Camera2D.current = true
 		scene.queue_free()
 	
