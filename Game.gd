@@ -2,6 +2,7 @@ extends Node2D
 
 var MiniGameScene = preload("res://minigames/sticks_and_Stones.tscn")
 onready var player = $Transition/AnimationPlayer
+var scene
 
 func _ready():
 	pass # Replace with function body.
@@ -22,10 +23,14 @@ func transition(to_minigame : bool = true):
 	
 	# add minigame during transition animation
 	if to_minigame:
-		var scene = MiniGameScene.instance()
+		scene = MiniGameScene.instance()
 		add_child(scene)
+	else:
+		$Overworld/Camera2D.current = true
+		scene.queue_free()
 	
 	player.play_backwards("TransitionOut")
+	yield(player, "animation_finished")
 	
 	if not to_minigame:
 		Global.set_pause_tree($Overworld, false)

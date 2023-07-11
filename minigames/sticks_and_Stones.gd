@@ -92,8 +92,7 @@ func _on_Upgrades_button_down():
 
 
 func _on_Overworld_button_down():
-	get_tree().change_scene("res://Overworld/Overworld.tscn")
-
+	get_parent().transition(false)
 
 func _on_Back_button_down():
 		if transitioning == false:

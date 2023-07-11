@@ -14,7 +14,7 @@ class GameItemData:
 		
 var stick = GameItemData.new(
 		"Stick", 
-		0, 
+		20, 
 		load("res://Assets/Stick_material_32px.png"),
 		preload("res://Items/Stick.tscn")
 	)
